@@ -1,37 +1,48 @@
-# Windows11-portfolio
-[![Open in Visual Studio Code](https://img.shields.io/badge/Open%20In%20Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://open.vscode.dev/KasperiP/windows11-portfolio)
+# Project SKY — Windows 11 Desktop OS Experience
 
-Windows 11 inspired personal portfolio website built using Next.js & deployed on Vercel. Feel free to clean up my messy code and teach me how to write better typescript. Im noob 😩.
+An interactive Windows 11 desktop simulation environment built for **Project SKY** — the desktop-native AI companion for Windows 11.
 
-![windows11-banner](https://i.imgur.com/muQyeAG.png)
+![Project SKY Desktop OS](https://sky-ai.vercel.app/hero-desktop.png)
 
-## Demo
-View the website on Vercel: https://www.kassq.dev
+## 🌐 Live Web Demo
+Experience the interactive desktop UI live on Vercel:
+👉 **[https://sky-os-sepia.vercel.app](https://sky-os-sepia.vercel.app)**
 
-## Getting Started
+---
 
-First, run the development server:
+## ⚡ Overview
+
+This web-based Windows 11 desktop simulation powers the interactive showcase within the **Project SKY** waitlist landing page. It provides:
+- **Interactive File System & Explorer**: Browse Projects, Tools, Links, and Media.
+- **Notepad & System Viewers**: Read About SKY document, technical specs, and architecture logs.
+- **Window Management**: Drag, resize, minimize, maximize, and stack desktop windows powered by `react-rnd`.
+- **Integrated Voice & Chat Hooks**: Listens for `postMessage` navigation events sent by SKY voice commands.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js & React 17
+- **Styling**: Tailwind CSS & Custom Glassmorphism Shaders
+- **Windowing System**: `react-rnd` & `react-selecto`
+- **Deployment**: Vercel Serverless
+
+---
+
+## 🚀 Getting Started locally
+
+To run the desktop OS locally for development or iframe embedding:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3001](http://localhost:3001) in your browser to view the desktop environment.
 
+---
 
-## Learn More
+## 🔗 Connected Repositories
 
-To learn more about Next.js, take a look at the following resources:
-
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Project SKY Waitlist**: [https://github.com/schrodingercats-sudo/Projectsky.git](https://github.com/schrodingercats-sudo/Projectsky.git)
+- **Project SKY Desktop OS**: [https://github.com/schrodingercats-sudo/Sky-OS.git](https://github.com/schrodingercats-sudo/Sky-OS.git)
