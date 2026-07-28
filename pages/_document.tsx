@@ -5,7 +5,10 @@ import { Head, Html, Main, NextScript } from 'next/document';
 export default function Document() {
 	return (
 		<Html lang="en">
-			<Head>
+				{/* Remove favicon */}
+				<link rel="icon" href="data:," />
+				<link rel="shortcut icon" href="data:," />
+
 				{/* Fonts */}
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" />
