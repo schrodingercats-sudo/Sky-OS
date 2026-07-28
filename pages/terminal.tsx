@@ -6,24 +6,24 @@ function Terminal() {
 	return (
 		<>
 			<Head>
-				<title>kassq - Terminal</title>
+				<title>Project SKY — Terminal</title>
 				<link rel="canonical" href="https://www.kassq.dev/terminal" />
 
 				{/* Description */}
 				<meta
 					name="description"
-					content="A place to execute commands and feel like being a hacker."
+					content="Project SKY Interactive PowerShell / Bash Terminal"
 				/>
 
 				{/* OpenGraph */}
-				<meta property="og:title" content="Kassq - Terminal" />
+				<meta property="og:title" content="Project SKY — Terminal" />
 				<meta
 					property="og:url"
 					content="https://www.kassq.dev/terminal"
 				/>
 				<meta
 					property="og:description"
-					content="A place to execute commands and feel like being a hacker."
+					content="Project SKY Interactive PowerShell / Bash Terminal"
 				/>
 			</Head>
 			<div style={{ height: '100%' }}>

@@ -29,7 +29,7 @@ function Terminal() {
 						...history,
 						{
 							input: input,
-							response: `kassq`,
+							response: `sky`,
 						},
 					]);
 					break;
@@ -39,7 +39,7 @@ function Terminal() {
 
 						{
 							input: input,
-							response: `hello.txt`,
+							response: `Project_Notes.md architecture.txt sky_core.py config.json`,
 						},
 					]);
 					break;
@@ -109,7 +109,7 @@ function Terminal() {
 	return (
 		<DraggableWindow
 			windowName={'terminal'}
-			topTitle={'MINGW64:/c/Users/kassq'}
+			topTitle={'MINGW64:/c/Users/sky'}
 			topIcon={
 				<Image
 					src={`/icons/terminal/terminal.png`}
@@ -126,7 +126,7 @@ function Terminal() {
 						className={styles.historyItem}
 					>
 						<p className={styles.terminalTitle}>
-							kassq@Kasperi <span>MINGW64</span> <span>~</span>
+							sky@projectsky <span>MINGW64</span> <span>~</span>
 						</p>
 						<p>$ {item.input}</p>
 						{item.response?.split('<br/>')?.map((text, index) => (
@@ -136,7 +136,7 @@ function Terminal() {
 				))}
 				<div className={styles.historyItem}>
 					<p className={styles.terminalTitle}>
-						kassq@Kasperi <span>MINGW64</span> <span>~</span>
+						sky@projectsky <span>MINGW64</span> <span>~</span>
 					</p>
 					<div className={`${styles.promt}`}>
 						<p>$</p>
