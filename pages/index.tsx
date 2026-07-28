@@ -5,21 +5,15 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>kassq</title>
-				<link rel="canonical" href="https://www.kassq.dev" />
-
-				{/* Description */}
+				<title>Project SKY — Windows 11 Desktop Companion</title>
 				<meta
 					name="description"
-					content="Kassq's personal website. A place to share my projects and learn about me. I do some coding sometimes."
+					content="Project SKY is your desktop-native AI companion for Windows 11. It lives on your desktop, understands your context, and gets things done."
 				/>
-
-				{/* OpenGraph */}
-				<meta property="og:title" content="Kassq" />
-				<meta property="og:url" content="https://www.kassq.dev" />
+				<meta property="og:title" content="Project SKY — Windows 11 Desktop Companion" />
 				<meta
 					property="og:description"
-					content="Kassq's personal website. A place to share my projects and learn about me. I do some coding sometimes."
+					content="Project SKY is your desktop-native AI companion for Windows 11."
 				/>
 			</Head>
 			<div style={{ height: '100%' }}>

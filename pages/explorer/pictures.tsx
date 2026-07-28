@@ -108,42 +108,37 @@ function Pictures({ data }: { data: MediaType[] }) {
 }
 
 export async function getStaticProps() {
-	const res = await fetch(
-		`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/resources/image?max_results=100`,
+	const data: MediaType[] = [
 		{
-			headers: {
-				Authorization: `Basic ${Buffer.from(
-					process.env.CLOUDINARY_API_KEY +
-						':' +
-						process.env.CLOUDINARY_API_SECRET
-				).toString('base64')}}`,
-			},
-		}
-	).then((res) => res.json());
-
-	const data = res.resources.map((image: MediaType) => {
-		return {
-			url: image.secure_url.replace('/upload/', '/upload/q_auto:low/'),
-			secure_url: image.secure_url,
-			filename:
-				image.public_id.replace('images/', '').length > 25
-					? image.public_id.replace('images/', '').slice(0, 25)
-					: image.public_id.replace('images/', ''),
-			format: image.format,
-		};
-	});
-
-	if (!data) {
-		return {
-			notFound: true,
-		};
-	}
+			url: '/hero-desktop.png',
+			secure_url: '/hero-desktop.png',
+			thumbnail: '/hero-desktop.png',
+			public_id: 'SKY_Desktop_Companion',
+			filename: 'SKY_Desktop_Companion',
+			format: 'png',
+		},
+		{
+			url: '/hero-phone.png',
+			secure_url: '/hero-phone.png',
+			thumbnail: '/hero-phone.png',
+			public_id: 'SKY_Mobile_Companion',
+			filename: 'SKY_Mobile_Companion',
+			format: 'png',
+		},
+		{
+			url: '/footer.jpg',
+			secure_url: '/footer.jpg',
+			thumbnail: '/footer.jpg',
+			public_id: 'SKY_Cloud_Texture',
+			filename: 'SKY_Cloud_Texture',
+			format: 'jpg',
+		},
+	];
 
 	return {
 		props: {
-			data,
+			data: data || [],
 		},
-		revalidate: 10,
 	};
 }
 

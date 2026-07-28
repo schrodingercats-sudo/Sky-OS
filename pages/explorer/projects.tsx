@@ -102,21 +102,40 @@ function Projects({ data }: { data: ProjectType[] }) {
 }
 
 export async function getStaticProps() {
-	const res = await fetch(`https://api.github.com/users/KasperiP/repos`);
-	const data = (await res.json()).filter(
-		(project: ProjectType) =>
-			project.fork === false && project.full_name !== 'KasperiP/KasperiP'
-	);
-
-	if (!data) {
-		return {
-			notFound: true,
-		};
-	}
+	const data: ProjectType[] = [
+		{
+			id: 1,
+			name: 'sky-desktop-electron',
+			full_name: 'projectsky/sky-desktop-electron',
+			html_url: 'https://github.com/projectsky/sky-desktop-electron',
+			fork: false,
+			updated_at: '2025-05-24T10:30:00Z',
+			size: 45000,
+		},
+		{
+			id: 2,
+			name: 'gemini-vision-pipeline',
+			full_name: 'projectsky/gemini-vision-pipeline',
+			html_url: 'https://github.com/projectsky/gemini-vision-pipeline',
+			fork: false,
+			updated_at: '2025-05-24T10:30:00Z',
+			size: 12000,
+		},
+		{
+			id: 3,
+			name: 'obsidian-memory-vault-fts',
+			full_name: 'projectsky/obsidian-memory-vault-fts',
+			html_url: 'https://github.com/projectsky/obsidian-memory-vault-fts',
+			fork: false,
+			updated_at: '2025-05-24T10:30:00Z',
+			size: 8500,
+		},
+	];
 
 	return {
-		props: { data },
-		revalidate: 10,
+		props: {
+			data: data || [],
+		},
 	};
 }
 

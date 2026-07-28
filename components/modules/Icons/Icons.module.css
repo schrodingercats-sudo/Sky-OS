@@ -1,13 +1,20 @@
 .container {
 	height: 100%;
+	width: 100%;
+	position: absolute;
+	inset: 0;
+	pointer-events: auto;
 }
 
 .wrapper {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-	grid-gap: 5px;
-	width: 100%;
-	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: flex-start;
+	max-height: calc(100vh - 60px);
+	gap: 10px;
+	padding: 16px;
+	width: auto;
 }
 
 .item {
@@ -15,20 +22,24 @@
 	flex-direction: column;
 	align-items: center;
 	width: 80px;
-	padding: 0 5px;
-	border-radius: 5px;
+	padding: 6px 4px;
+	border-radius: 6px;
 	text-align: center;
-	text-wrap: normal;
 	cursor: pointer;
+	transition: background-color 0.15s ease;
 }
 
 .item p {
-	color: #fff;
-	font-size: 0.7rem;
+	color: #ffffff;
+	font-size: 0.75rem;
+	margin-top: 4px;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+	font-weight: 500;
+	word-break: break-word;
 }
 
 .item:hover {
-	background-color: #2e2e2e;
+	background-color: rgba(255, 255, 255, 0.15);
 }
 
 .deleted {
@@ -36,5 +47,5 @@
 }
 
 .selected {
-	background-color: #2e2e2e;
+	background-color: rgba(255, 255, 255, 0.25);
 }

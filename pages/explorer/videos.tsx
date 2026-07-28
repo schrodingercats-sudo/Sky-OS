@@ -108,44 +108,10 @@ function Videos({ data }: { data: MediaType[] }) {
 }
 
 export async function getStaticProps() {
-	const res = await fetch(
-		`https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/resources/video?max_results=100`,
-		{
-			headers: {
-				Authorization: `Basic ${Buffer.from(
-					process.env.CLOUDINARY_API_KEY +
-						':' +
-						process.env.CLOUDINARY_API_SECRET
-				).toString('base64')}}`,
-			},
-		}
-	).then((res) => res.json());
-
-	const data = res.resources.map((video: MediaType) => {
-		return {
-			thumbnail: (
-				video.secure_url.split('.').slice(0, -1).join('.') + '.webp'
-			).replace('/upload/', '/upload/q_auto:low/'),
-			filename:
-				video.public_id.replace('videos/', '').length > 25
-					? video.public_id.replace('videos/', '').slice(0, 25)
-					: video.public_id.replace('videos/', ''),
-			secure_url: video.secure_url,
-			format: video.format,
-		};
-	});
-
-	if (!data) {
-		return {
-			notFound: true,
-		};
-	}
-
 	return {
 		props: {
-			data,
+			data: [],
 		},
-		revalidate: 10,
 	};
 }
 

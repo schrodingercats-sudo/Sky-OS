@@ -6,8 +6,15 @@ import styles from './Icons.module.css';
 
 const ESCAPE_KEYS = ['46', 'Delete'];
 
+interface DynamicFile {
+	id: string;
+	name: string;
+	icon: string;
+}
+
 function Icons() {
 	const [deleted, setDeleted] = useState(false);
+	const [dynamicFiles, setDynamicFiles] = useState<DynamicFile[]>([]);
 
 	const handleDelete = () => {
 		const selected = document.querySelectorAll(`.selected`);
@@ -30,6 +37,54 @@ function Icons() {
 		return () => {
 			document.removeEventListener('keydown', eventListener);
 		};
+	}, []);
+
+	// Listen for postMessage commands from parent window (sky-waitlist ProductShowcase)
+	useEffect(() => {
+		const handleMessage = (event: MessageEvent) => {
+			if (!event.data || !event.data.type) return;
+
+			if (event.data.type === 'sky-create-file') {
+				const fileName = event.data.fileName || 'Untitled.txt';
+				const ext = fileName.split('.').pop()?.toLowerCase() || 'txt';
+				let icon = '/icons/notes/notes.png';
+				if (['py', 'js', 'ts', 'tsx', 'jsx'].includes(ext)) icon = '/icons/notes/notes.png';
+				if (['md', 'txt', 'log'].includes(ext)) icon = '/icons/notes/notes.png';
+				if (['json', 'xml', 'yaml', 'yml'].includes(ext)) icon = '/icons/notes/notes.png';
+				if (['png', 'jpg', 'jpeg', 'gif', 'svg'].includes(ext)) icon = '/icons/pictures/pictures.png';
+
+				setDynamicFiles(prev => [
+					...prev,
+					{ id: `sky-${Date.now()}`, name: fileName, icon }
+				]);
+				setDeleted(false);
+			}
+
+			if (event.data.type === 'sky-delete-file') {
+				const fileName = event.data.fileName || '';
+				// First try to remove from dynamically created files
+				setDynamicFiles(prev => {
+					const idx = prev.findIndex(f => f.name.toLowerCase() === fileName.toLowerCase());
+					if (idx !== -1) {
+						const next = [...prev];
+						next.splice(idx, 1);
+						return next;
+					}
+					return prev;
+				});
+				// Also visually hide a static desktop icon at random for demo effect
+				const allIcons = document.querySelectorAll(`.selectoItem:not(.recycleBin):not(.deleted):not(.sky-dynamic-file)`);
+				if (allIcons.length > 0) {
+					const randomIcon = allIcons[Math.floor(Math.random() * allIcons.length)];
+					randomIcon.classList.add(`${styles.deleted}`);
+					randomIcon.classList.add('deleted');
+				}
+				setDeleted(true);
+			}
+		};
+
+		window.addEventListener('message', handleMessage);
+		return () => window.removeEventListener('message', handleMessage);
 	}, []);
 
 	return (
@@ -62,7 +117,7 @@ function Icons() {
 								width={40}
 								height={40}
 							></Image>
-							<p>About me</p>
+							<p>About SKY</p>
 						</div>
 					</Link>
 					<Link href={'/explorer/projects'} passHref>
@@ -87,17 +142,6 @@ function Icons() {
 							<p>Tools</p>
 						</div>
 					</Link>
-					<Link href={'/explorer/podcasts'} passHref>
-						<div className={`${styles.item} selectoItem`}>
-							<Image
-								src="/icons/folder/folder.png"
-								alt="icon"
-								width={40}
-								height={40}
-							></Image>
-							<p>Podcasts I listen to</p>
-						</div>
-					</Link>
 					<Link href={'/explorer/links'} passHref>
 						<div className={`${styles.item} selectoItem`}>
 							<Image
@@ -109,29 +153,19 @@ function Icons() {
 							<p>Links</p>
 						</div>
 					</Link>
-					<Link href={'/explorer/pictures'} passHref>
-						<div className={`${styles.item} selectoItem`}>
+
+					{/* DYNAMICALLY CREATED FILES VIA SKY CHATBOX postMessage */}
+					{dynamicFiles.map((file) => (
+						<div key={file.id} className={`${styles.item} selectoItem sky-dynamic-file`} style={{ animation: 'fadeIn 0.4s ease' }}>
 							<Image
-								src="/icons/pictures/pictures.png"
+								src={file.icon}
 								alt="icon"
 								width={40}
 								height={40}
 							></Image>
-							<p>Pictures</p>
+							<p>{file.name}</p>
 						</div>
-					</Link>
-					<Link href={'/explorer/videos'} passHref>
-						<div className={`${styles.item} selectoItem`}>
-							<Image
-								src="/icons/videos/videos.png"
-								alt="icon"
-								width={40}
-								height={40}
-								quality={100}
-							></Image>
-							<p>Videos</p>
-						</div>
-					</Link>
+					))}
 
 					<div className={`${styles.item} selectoItem recycleBin`}>
 						{deleted ? (
