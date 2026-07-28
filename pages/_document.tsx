@@ -1,11 +1,10 @@
-// pages/_document.js
-
 import { Head, Html, Main, NextScript } from 'next/document';
 
 export default function Document() {
 	return (
 		<Html lang="en">
-				{/* Remove favicon */}
+			<Head>
+				{/* Blank favicon */}
 				<link rel="icon" href="data:," />
 				<link rel="shortcut icon" href="data:," />
 
@@ -22,29 +21,24 @@ export default function Document() {
 				<meta charSet="utf-8" />
 				<meta name="language" content="english" />
 
-				<meta name="author" content="kassq" />
-				<meta name="designer" content="kassq" />
-				<meta name="publisher" content="kassq" />
+				<meta name="author" content="Project SKY" />
+				<meta name="designer" content="Project SKY" />
+				<meta name="publisher" content="Project SKY" />
 
 				<meta
 					name="keywords"
-					content="kassq, kasperi, coding, development"
+					content="Project SKY, Windows 11 AI, Desktop Companion"
 				/>
 
 				<meta name="robots" content="index, follow" />
-				<meta name="subject" content="Personal" />
+				<meta name="subject" content="Desktop AI Companion" />
 
 				{/* Global OpenGraph tags */}
 				<meta
 					property="og:site_name"
-					content="Average Windows enjoyer"
+					content="Project SKY Desktop OS"
 				/>
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content="https://www.kassq.dev" />
-				<meta
-					property="og:image"
-					content="https://www.kassq.dev/logo.webp"
-				/>
 
 				{/* Global Site Tag (gtag.js) - Google Analytics */}
 				<script
